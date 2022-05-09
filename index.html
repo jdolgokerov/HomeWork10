@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeWork10</title>
+</head>
+<body>
+    <script>
+        const sale = {
+            value: 'Discont',
+            number: 25
+        }
+
+        function getResult() {
+            return this.value + ' ' + this.number + '%';
+        }
+
+        function bind(fn, context, ...args) {
+            const vvid = Date.now();
+
+            context[vvid] = fn;
+            const fnResult = context[vvid](...args);
+            delete context[vvid];
+
+            return fnResult
+        }
+
+        getResult.bind();
+        console.log(bind(getResult, sale));
+    </script>
+</body>
+</html>
